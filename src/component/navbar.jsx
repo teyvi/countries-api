@@ -2,6 +2,8 @@ import React from 'react'
 import {Link } from 'react-router-dom';
 
 
+
+
 export const Navbar = () => {
     return (
         <div>
@@ -12,6 +14,8 @@ export const Navbar = () => {
                     <li><Link to='/countrypage'>Countries</Link></li>
                     <li><Link to='/gallerypage'>Gallery</Link></li>
                     <li><Link to='/contactpage'>Contact Us</Link></li>
+                    <li><Link to='/country'>Country</Link></li>
+
                 </ul>
             </nav>
         </div>

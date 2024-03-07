@@ -4,6 +4,7 @@ import ContactUs from './pages/contactus';
 import Countrypage from './pages/countrypage';
 import Gallery from './pages/gallery';
 import Homepage from './pages/homepage';
+import Country from './pages/country';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
           <Route path='/countrypage' element={<Countrypage/>}></Route>
           <Route path='/gallerypage' element={<Gallery/>}></Route>
           <Route path='/contactpage' element={<ContactUs/>}></Route>
+          <Route path='/country' element={<Country/>}></Route>
+
 
 
 

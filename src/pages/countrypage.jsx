@@ -1,51 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../component/navbar'
+import axios from 'axios'
 
 export const Countrypage = () => {
+    const [countries, setCountries] = useState([]);
+
 
     const url = 'https://restcountries.com/v3.1/all';
 
-    function displayCountries(){
-
-        let allCountries = fetch(url).then((response) => {
-    console.log('country',response.json())
-})
+    async function displayAllCountries() {
+        const restCountries = await axios.get(url)
+        const countriesBox = restCountries.data
+        const sliceData = countriesBox.slice(0, 5)
+        // console.log('sliceddata', sliceData)
+        setCountries(countriesBox);
+        // sliceData.map((item) => {
+        //     console.log(item.name.common)
+        //     return null;
+        // });
 
     };
+    displayAllCountries()
 
-    displayCountries()
+    return (
 
-// async function displayAllCountries(){
-//     const countries = await fetch(url)
-//     console.log("countries", countries)
+        <>
+            <Navbar />
+            <ul>
+            {countries.map((country, index) => <li key={index}>{country.name.common}</li>)}
+            </ul>
+            
+            <ul>
+            {countries.map((country, index) => <li key={index}>{country.name.official}</li>)}
+            </ul>
+            <div>
 
-// }
-// displayAllCountries()
+            </div>
 
-//create a function to display just five countries in the console
-//use a string method to get 5 countries
-//get function
-//call function
-function display5Countries(){
-    fetch(url)
-    .then((response) => response.json()) 
-    .then((data) =>{console.log('First 5 Countries:' ,data.slice(0,5));
-    }) 
-    .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-}
-display5Countries()
-
-
-  return (
-
-    <>
-    <Navbar/>
-    <h1>This is the country page</h1>
-    
-    </>
-  );
+        </>
+    );
 };
 
 export default Countrypage;
+
+ 
+
